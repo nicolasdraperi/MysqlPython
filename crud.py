@@ -195,4 +195,3 @@ def show_all_log():
         finally:
             conn.close()
 
-print(recup_user_id_by_name("julien"))
