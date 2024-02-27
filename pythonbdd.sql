@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mar. 27 fév. 2024 à 16:45
+-- Généré le : mar. 27 fév. 2024 à 18:25
 -- Version du serveur : 8.0.31
 -- Version de PHP : 8.0.26
 
@@ -34,20 +34,14 @@ CREATE TABLE IF NOT EXISTS `langue` (
   `date` date NOT NULL,
   `level` tinyint NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=43 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `langue`
 --
 
 INSERT INTO `langue` (`id`, `nom`, `date`, `level`) VALUES
-(2, 'test', '1999-05-05', 1),
-(12, 'test', '1999-05-05', 1),
-(11, 'test', '1999-05-05', 1),
-(5, 'test', '1999-05-05', 1),
-(6, 'test', '1999-05-05', 1),
-(7, 'test', '1999-05-05', 1),
-(8, 'test', '1999-05-05', 1),
+(42, 'bob', '1999-05-09', 3),
 (9, 'test', '1999-05-05', 1),
 (10, 'test', '1999-05-05', 1),
 (13, 'test', '1999-05-05', 1),
@@ -76,8 +70,7 @@ INSERT INTO `langue` (`id`, `nom`, `date`, `level`) VALUES
 (36, 'test', '1999-05-05', 1),
 (37, 'test', '1999-05-05', 1),
 (38, 'test', '1999-05-05', 1),
-(39, 'test', '1999-05-05', 1),
-(40, 'test', '1999-05-05', 1);
+(39, 'PHP', '1999-12-25', 2);
 
 -- --------------------------------------------------------
 
@@ -89,48 +82,60 @@ DROP TABLE IF EXISTS `log`;
 CREATE TABLE IF NOT EXISTS `log` (
   `id` int NOT NULL AUTO_INCREMENT,
   `message` varchar(535) NOT NULL,
+  `log_date` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=46 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `log`
 --
 
-INSERT INTO `log` (`id`, `message`) VALUES
-(1, 'henry a ajouté le language numéro 4 dans la table language'),
-(2, 'test a ajouté le language henry dans la table language'),
-(3, 'test a ajouté le language henry dans la table language'),
-(4, 'test a ajouté le language henry dans la table language'),
-(5, 'test a ajouté le language henry dans la table language'),
-(6, 'test a ajouté le language henry dans la table language'),
-(7, 'test a ajouté le language henry dans la table language'),
-(8, 'test a ajouté le language henry dans la table language'),
-(9, 'test a ajouté le language henry dans la table language'),
-(10, 'test a ajouté le language henry dans la table language'),
-(11, 'test a ajouté le language henry dans la table language'),
-(12, 'henry a ajouté le language test dans la table language'),
-(13, 'henry a ajouté le language test dans la table language'),
-(14, 'henry a ajouté le language test dans la table language'),
-(15, 'henry a ajouté le language test dans la table language'),
-(16, 'henry a ajouté le language test dans la table language'),
-(17, 'henry a ajouté le language test dans la table language'),
-(18, 'henry a ajouté le language test dans la table language'),
-(19, 'henry a ajouté le language test dans la table language'),
-(20, 'henry a ajouté le language test dans la table language'),
-(21, 'henry a ajouté le language test dans la table language'),
-(22, 'henry a modifié le language julien dans la table language'),
-(23, 'henry a ajouté le language test dans la table language'),
-(24, 'henry a ajouté le language test dans la table language'),
-(25, 'henry a ajouté le language test dans la table language'),
-(26, 'henry a ajouté le language test dans la table language'),
-(27, 'henry a ajouté le language test dans la table language'),
-(28, 'henry a ajouté le language test dans la table language'),
-(29, 'henry a ajouté le language test dans la table language'),
-(30, 'henry a ajouté le language test dans la table language'),
-(31, 'henry a ajouté le language test dans la table language'),
-(32, 'henry a ajouté le language test dans la table language'),
-(33, 'henry a modifié le language julien dans la table language'),
-(34, 'julien a supprimé le language numéro 1 dans la table language');
+INSERT INTO `log` (`id`, `message`, `log_date`) VALUES
+(1, 'henry a ajouté le language numéro 4 dans la table language', '0000-00-00'),
+(2, 'test a ajouté le language henry dans la table language', '0000-00-00'),
+(3, 'test a ajouté le language henry dans la table language', '0000-00-00'),
+(4, 'test a ajouté le language henry dans la table language', '0000-00-00'),
+(5, 'test a ajouté le language henry dans la table language', '0000-00-00'),
+(6, 'test a ajouté le language henry dans la table language', '0000-00-00'),
+(7, 'test a ajouté le language henry dans la table language', '0000-00-00'),
+(8, 'test a ajouté le language henry dans la table language', '0000-00-00'),
+(9, 'test a ajouté le language henry dans la table language', '0000-00-00'),
+(10, 'test a ajouté le language henry dans la table language', '0000-00-00'),
+(11, 'test a ajouté le language henry dans la table language', '0000-00-00'),
+(12, 'henry a ajouté le language test dans la table language', '0000-00-00'),
+(13, 'henry a ajouté le language test dans la table language', '0000-00-00'),
+(14, 'henry a ajouté le language test dans la table language', '0000-00-00'),
+(15, 'henry a ajouté le language test dans la table language', '0000-00-00'),
+(16, 'henry a ajouté le language test dans la table language', '0000-00-00'),
+(17, 'henry a ajouté le language test dans la table language', '0000-00-00'),
+(18, 'henry a ajouté le language test dans la table language', '0000-00-00'),
+(19, 'henry a ajouté le language test dans la table language', '0000-00-00'),
+(20, 'henry a ajouté le language test dans la table language', '0000-00-00'),
+(21, 'henry a ajouté le language test dans la table language', '0000-00-00'),
+(22, 'henry a modifié le language julien dans la table language', '0000-00-00'),
+(23, 'henry a ajouté le language test dans la table language', '0000-00-00'),
+(24, 'henry a ajouté le language test dans la table language', '0000-00-00'),
+(25, 'henry a ajouté le language test dans la table language', '0000-00-00'),
+(26, 'henry a ajouté le language test dans la table language', '0000-00-00'),
+(27, 'henry a ajouté le language test dans la table language', '0000-00-00'),
+(28, 'henry a ajouté le language test dans la table language', '0000-00-00'),
+(29, 'henry a ajouté le language test dans la table language', '0000-00-00'),
+(30, 'henry a ajouté le language test dans la table language', '0000-00-00'),
+(31, 'henry a ajouté le language test dans la table language', '0000-00-00'),
+(32, 'henry a ajouté le language test dans la table language', '0000-00-00'),
+(33, 'henry a modifié le language julien dans la table language', '0000-00-00'),
+(34, 'julien a supprimé le language numéro 1 dans la table language', '0000-00-00'),
+(35, 'julien a supprimé le language numéro 2 dans la table language', '2024-02-27'),
+(36, 'julien a ajouté le language 12 dans la table language', '2024-02-27'),
+(37, 'julien a supprimé le language numéro 11 dans la table language', '2024-02-27'),
+(38, 'julien a supprimé le language numéro 5 dans la table language', '2024-02-27'),
+(39, 'julien a supprimé le language numéro 6 dans la table language', '2024-02-27'),
+(40, 'julien a supprimé le language numéro 7 dans la table language', '2024-02-27'),
+(41, 'julien a supprimé le language numéro 8 dans la table language', '2024-02-27'),
+(42, 'julien a ajouté le language js dans la table language', '2024-02-27'),
+(43, 'julien a modifié le language bob dans la table language', '2024-02-27'),
+(44, 'julien a supprimé le language numéro 40 dans la table language', '2024-02-27'),
+(45, 'julien a modifié le language PHP dans la table language', '2024-02-27');
 
 -- --------------------------------------------------------
 
