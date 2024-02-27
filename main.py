@@ -35,10 +35,13 @@ if recup_user_id_by_name(connexion) != None:
         elif question == "5":
             id = input("Entrez l'id du language")
             data = show_one_language(id)
+            print(data)
         elif question == "6":
             data = show_all_log()
             for elem in data:
                 print(elem)
+        else:
+            print("La demande n'a pas été comprise")
         question = input("Que souhaitez-vous faire ?\n"
                          "1. Supprimer une langue\n"
                          "2. Ajouter une nouvelle langue\n"

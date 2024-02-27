@@ -1,4 +1,11 @@
 import mysql.connector
+from datetime import datetime
+
+
+def get_current_date():
+    current_date = datetime.now()
+    formatted_date = current_date.strftime("%Y-%m-%d")
+    return formatted_date
 
 
 def create_connection():
@@ -27,8 +34,9 @@ def delete_language(id_language, id_user):
             cursor.execute(sql, (id_language,))
 
             user_name = recup_user_name(id_user)
-            log = "Insert into log (message) value (%s ' a supprimé le language numéro %s dans la table language')"
-            cursor.execute(log, (user_name, id_language))
+
+            log = "Insert into log (message, log_date) value (%s ' a supprimé le language numéro %s dans la table language', %s)"
+            cursor.execute(log, (user_name, id_language,get_current_date()))
 
             conn.commit()
             print("Language", id_language, "a été supprimé de la table language")
@@ -48,8 +56,8 @@ def create_language(name, date, level, id_user):
             cursor.execute(sql, (name, date, level))
 
             user_name = recup_user_name(id_user)
-            log = "Insert into log (message) value (%s ' a ajouté le language ' %s ' dans la table language')"
-            cursor.execute(log, (user_name, name))
+            log = "Insert into log (message, log_date) value (%s ' a ajouté le language ' %s ' dans la table language',%s)"
+            cursor.execute(log, (user_name, name,get_current_date()))
 
             conn.commit()
             print("Language", name, "a été ajouté de la table language")
@@ -70,8 +78,8 @@ def update_language(id_language, name, date, level, id_user):
                 cursor.execute(sql, (name, date, level, id_language))
 
                 user_name = recup_user_name(id_user)
-                log = "Insert into log (message) value (%s ' a modifié le language ' %s ' dans la table language')"
-                cursor.execute(log, (user_name, name))
+                log = "Insert into log (message,log_date) value (%s ' a modifié le language ' %s ' dans la table language',%s)"
+                cursor.execute(log, (user_name, name,get_current_date()))
 
                 conn.commit()
                 print("Language", name, "a été modifié")
@@ -80,8 +88,8 @@ def update_language(id_language, name, date, level, id_user):
                 cursor.execute(sql, (name, date, id_language))
 
                 user_name = recup_user_name(1)
-                log = "Insert into log (message) value (%s ' a modifié le language ' %s ' dans la table language')"
-                cursor.execute(log, (user_name, name))
+                log = "Insert into log (message,log_date) value (%s ' a modifié le language ' %s ' dans la table language',%s)"
+                cursor.execute(log, (user_name, name,get_current_date()))
 
                 conn.commit()
                 print("Language", name, "a été modifié")
@@ -90,8 +98,8 @@ def update_language(id_language, name, date, level, id_user):
                 cursor.execute(sql, (name, id_language))
 
                 user_name = recup_user_name(1)
-                log = "Insert into log (message) value (%s ' a modifié le language ' %s ' dans la table language')"
-                cursor.execute(log, (user_name, name))
+                log = "Insert into log (message,log_date) value (%s ' a modifié le language ' %s ' dans la table language,'%s)"
+                cursor.execute(log, (user_name, name,get_current_date()))
 
                 conn.commit()
                 print("Language", name, "a été modifié")
@@ -181,12 +189,13 @@ def recup_user_id_by_name(user_name):
             cursor.close()
             conn.close()
 
+
 def show_all_log():
     conn = create_connection()
     if conn is not None:
         try:
             cursor = conn.cursor()
-            cursor.execute("select id,message from log")
+            cursor.execute("select id,message,log_date from log")
             result = cursor.fetchall()
             return result
         except mysql.connector.Error as err:
@@ -194,4 +203,3 @@ def show_all_log():
             return None
         finally:
             conn.close()
-
