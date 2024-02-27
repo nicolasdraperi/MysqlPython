@@ -140,6 +140,20 @@ def show_one_language(id_langue):
         finally:
             conn.close()
 
+def show_all_language_id():
+    conn = create_connection()
+    if conn is not None:
+        try:
+            cursor = conn.cursor()
+            cursor.execute("select id,nom from langue")
+            result = cursor.fetchall()
+            return result
+        except mysql.connector.Error as err:
+            print("Erreur lors de la selection", err)
+            return None
+        finally:
+            conn.close()
+
 
 def recup_user_name(user_id):
     conn = create_connection()

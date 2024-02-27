@@ -1,6 +1,6 @@
 from crud import *
 
-connexion = input("Entrez votre nom")
+connexion = input("Entrez votre nom : ")
 if recup_user_id_by_name(connexion) != None:
     user_id = recup_user_id_by_name(connexion)
     question = input("Que souhaitez-vous faire ?\n"
@@ -15,25 +15,35 @@ if recup_user_id_by_name(connexion) != None:
                      )
     while question != "off":
         if question == "1":
-            id_language = int(input("Entrez l'id de la langage que vous voulez supprimer"))
+            id_langue = show_all_language_id()
+            for id in id_langue:
+                print(id)
+            id_language = int(input("Entrez l'id de la langage que vous voulez supprimer : "))
             delete_language(id_language,user_id)
         elif question == "2":
-            name = input("Entrez le nom du language")
-            date = input("Entrez le date de création du langage")
-            level = input("Entrez le niveau du langage")
+            name = input("Entrez le nom du language : ")
+            date = input("Entrez le date de création du langage : ")
+            level = input("Entrez le niveau du langage : ")
             create_language(name, date, level, user_id)
         elif question == "3":
-            id = input("Entrez l'id du language que vous voulez modifier")
-            name = input("Entrez le nom du language")
-            date = input("Entrez le date de création du langage")
-            level = input("Entrez le niveau du langage")
+            id_langue = show_all_language_id()
+            for id in id_langue:
+                print(id)
+
+            id = input("Entrez l'id du language que vous voulez modifier : ")
+            name = input("Entrez le nom du language : ")
+            date = input("Entrez le date de création du langage : ")
+            level = input("Entrez le niveau du langage : ")
             update_language(id,name, date, level, user_id)
         elif question == "4":
             data = show_all_language()
             for elem in data:
                 print(elem)
         elif question == "5":
-            id = input("Entrez l'id du language")
+            id_langue = show_all_language_id()
+            for id in id_langue:
+                print(id)
+            id = input("Entrez l'id du language : ")
             data = show_one_language(id)
             print(data)
         elif question == "6":
