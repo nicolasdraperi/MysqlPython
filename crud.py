@@ -195,43 +195,4 @@ def show_all_log():
         finally:
             conn.close()
 
-
-"""
-langue = input("Entrez le nom du language : ")
-date = input("Entrez une date format (YYYY-MM-JJ) : ")
-level = int(input("Entrez le niveau : "))
-# create_language(langue, date, level)
-"""
-
-"""
-id = int(input("Entrez l'id du language : "))
-delete_language(id)
-
-
-update_language(3, "henry", "2300-12-30", 2)
-
-data1 = show_one_language(1)
-data2 = show_all_language()
-for elem in data2:
-    print(elem)
-    
-2 table en plus,
-utilisateur id
-table log, id, message (action qui a été faite, sur quel table, qui l'a fait')
-
-action, peut faire un crud, si il veut modifier un truc il faut lui ajouter l'id
-
-
-i = 0
-
-    
-id = int(input("Entrez l'id du language : "))
-
-for i in range(10):
-    i += 1
-    create_language("test", "1999-05-05", 1)
-
-update_language(1, "julien", "2300-12", 2)
-"""
-
 print(recup_user_id_by_name("julien"))
